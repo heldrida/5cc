@@ -10,5 +10,11 @@
   "scripts": {
     "test": "jest",
     "watch": "npx onchange './src/*.js' './src/*.test.js' -- yarn test"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "engines": {
+    "node" : ">=10.16.0"
   }
 }
