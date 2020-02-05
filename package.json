@@ -4,6 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "jest": "^25.1.0"
+    "jest": "^25.1.0",
+    "onchange": "^6.1.0"
+  },
+  "scripts": {
+    "test": "jest",
+    "watch": "npx onchange './src/*.js' './src/*.test.js' -- yarn test"
   }
 }
