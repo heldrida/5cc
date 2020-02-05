@@ -10,7 +10,26 @@ const isValidImageSize = (size) => {
 
 const extractImageFromValidated = (validLogos) => Array.isArray(validLogos) && validLogos.pop().url
 
+const jsonPostHandler = (payload) => {
+  const filteredData = payload.filter(data => data.count > 0)
+  const data = filteredData.map(data => {
+    const { name, count, logos } = data
+    const validLogos = logos.filter(lData => isValidImageSize(lData.size) && lData.url)
+    const thumbnail = extractImageFromValidated(validLogos)
+    return {
+      name,
+      count,
+      thumbnail
+    }
+  })
+  const computedResponse = {
+    response: data
+  }
+  return computedResponse
+}
+
 module.exports = {
   isValidImageSize,
-  extractImageFromValidated
+  extractImageFromValidated,
+  jsonPostHandler
 }
