@@ -8,8 +8,9 @@
     "onchange": "^6.1.0"
   },
   "scripts": {
-    "test": "jest",
-    "watch": "npx onchange './src/*.js' './src/*.test.js' -- yarn test"
+    "test": "npx jest ./src",
+    "watch": "npx onchange './src/*.js' './src/*.test.js' -- yarn test",
+    "server": "node api/index.js"
   },
   "dependencies": {
     "express": "^4.17.1"
