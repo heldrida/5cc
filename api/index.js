@@ -1,9 +1,7 @@
 const port = 3000
 const express = require('express')
 const app = express()
-const { isUserRequestValid } = require('./helpers')
-
-const { jsonPostHandler } = require('../src/helpers')
+const { jsonPostHandler, isUserRequestValid } = require('../src/helpers')
 
 app.use(express.json())
 
