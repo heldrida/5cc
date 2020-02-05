@@ -6,9 +6,9 @@ const { jsonPostHandler, isUserRequestValid } = require('../src/helpers')
 app.use(express.json())
 
 app.post('/', (request, response) => {
-  const hasValidUserRequest = isUserRequestValid(request)
+  const requestBody = request.body
+  const hasValidUserRequest = isUserRequestValid(requestBody)
   if (hasValidUserRequest) {
-    const requestBody = request.body
     const computedResponse = jsonPostHandler(requestBody.payload)
     response.send(computedResponse)
   } else {
