@@ -1,6 +1,21 @@
   5CC
   ---
 
+  Start the project by running the install command, such as:
+
+    yarn install
+
+    *let's assume you use yarn, use npm instead otherwise
+
+  > Run tests:
+
+    yarn test
+
+  > Initialise the Public API:
+
+    yarn server
+
+
   Please create a webservice on a public URL which modifies an incoming JSON POST payload and returns a response.
 
   The response should be a JSON object with property response with an Array of items.
