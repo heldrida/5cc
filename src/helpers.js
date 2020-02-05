@@ -38,9 +38,27 @@ const jsonPostHandler = (payload) => {
   return computedResponse
 }
 
+const hasPayloadDataCorrectFormat = (payloadData) => {
+  const requiredProps = ['name', 'count', 'logos']
+  const hasAllProps = requiredProps.every(prop => payloadData.hasOwnProperty(prop))
+  return hasAllProps
+}
+
+const isPayloadValid = (payload) => payload.every(hasPayloadDataCorrectFormat)
+
+const isUserRequestValid = (requestBody) => {
+  const hasPayload = requestBody.hasOwnProperty('payload')
+  const hasData = requestBody.payload.length > 0
+  const hasPayloadValidData = hasPayload && hasData && isPayloadValid(requestBody.payload)
+  return hasPayloadValidData
+}
+
 module.exports = {
   isValidImageSize,
   extractImageFromValidated,
   jsonPostHandler,
-  getFilteredPayload
+  getFilteredPayload,
+  hasPayloadDataCorrectFormat,
+  isPayloadValid,
+  isUserRequestValid
 }

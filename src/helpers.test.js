@@ -1,6 +1,6 @@
 const request = require('./data/request.js')
 const response = require('./data/response.js')
-const { jsonPostHandler, isValidImageSize, getFilteredPayload } = require('./helpers')
+const { jsonPostHandler, isValidImageSize, getFilteredPayload, isPayloadValid, isUserRequestValid } = require('./helpers')
 
 test('name and count match their respective properties from the payload', () => {
   const computedResponse = jsonPostHandler(request.payload)
@@ -29,4 +29,14 @@ test('only items with a count greater that 1 are returned', () => {
   }]
   expect(getFilteredPayload(dataCountIsZero)).toBe(false)
   expect(getFilteredPayload(dataCountIsBiggerZero)).toBeTruthy()
+})
+
+test('should validate the user request', () => {
+  const hasValidUserRequest = isUserRequestValid(request)
+  expect(hasValidUserRequest).toBe(true)
+})
+
+test('should validate the payload data to be the correct format', () => {
+  const hasPayloadValidData = isPayloadValid(request.payload)
+  expect(hasPayloadValidData).toBe(true)
 })
